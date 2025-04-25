@@ -15,8 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorMovie", "RazorMovie\Ra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorMovie.Tests", "RazorMovie.Tests\RazorMovie.Tests.csproj", "{5F522062-1C4A-4CCC-8165-4CFD56CF6A4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionMovieApp", "FunctionMovieApp\FunctionMovieApp.csproj", "{96BE82F3-F0F1-4E3F-8585-5041D3A58A0D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,10 +45,6 @@ Global
 		{5F522062-1C4A-4CCC-8165-4CFD56CF6A4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F522062-1C4A-4CCC-8165-4CFD56CF6A4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F522062-1C4A-4CCC-8165-4CFD56CF6A4C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{96BE82F3-F0F1-4E3F-8585-5041D3A58A0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{96BE82F3-F0F1-4E3F-8585-5041D3A58A0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{96BE82F3-F0F1-4E3F-8585-5041D3A58A0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{96BE82F3-F0F1-4E3F-8585-5041D3A58A0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
