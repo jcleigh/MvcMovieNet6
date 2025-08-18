@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Moq;
 using RazorMovie.SharedServices;
+using Ganss.Xss;
 
 namespace RazorMovie.Tests
 {
@@ -11,12 +12,12 @@ namespace RazorMovie.Tests
         [TestMethod]
         public void Safe_CanRawEncode()
         {
-            // TODO: Fix CS0246: The type or namespace name 'HtmlSanitizer' could not be found. You may need to add a reference to the appropriate package or project, or use a different sanitizer implementation compatible with net9.0.
             var mockJsonHelper = new Mock<IJsonHelper>();
             var moqHtmlHelper = new Mock<IHtmlHelper>();
             moqHtmlHelper.Setup(m => m.Raw(It.IsAny<string>())).Returns((string s) => new HtmlString(s));
 
-            var converter = new Safe(moqHtmlHelper.Object, mockJsonHelper.Object, null);
+            var htmlSanitizer = new HtmlSanitizer();
+            var converter = new Safe(moqHtmlHelper.Object, mockJsonHelper.Object, htmlSanitizer);
 
             var actualText = "Hello<script>alert('Hello')</script>World";
 
