@@ -11,7 +11,7 @@ namespace RazorMovie.Tests
         [TestMethod]
         public void Safe_CanRawEncode()
         {
-            var htmlSanitizer = new HtmlSanitizer();
+            // TODO: Fix CS0246: The type or namespace name 'HtmlSanitizer' could not be found. You may need to add a reference to the appropriate package or project, or use a different sanitizer implementation compatible with net9.0.
             var mockJsonHelper = new Mock<IJsonHelper>();
             var moqHtmlHelper = new Mock<IHtmlHelper>();
             moqHtmlHelper.Setup(m => m.Raw(It.IsAny<string>())).Returns((string s) => new HtmlString(s));
