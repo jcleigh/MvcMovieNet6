@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
+using System.Text.Json;
 using System.Text;
 using System.Threading.Tasks;
 using WpfMovie.Models;
@@ -18,13 +18,11 @@ namespace WpfMovie.Services
         /// <returns></returns>
         public string Serialize(Movie anyMovie)
         {
-            var formatter = new BinaryFormatter();
-            using (var stream = new System.IO.MemoryStream())
+            // TODO: This replaces BinaryFormatter with System.Text.Json. This will not deserialize old binary data.
+            // Proposal fix for SYSLIB0011
+            var options = new JsonSerializerOptions { WriteIndented = false };
             {
-#pragma warning disable SYSLIB0011 // Type or member is obsolete
-                formatter.Serialize(stream, anyMovie);
-#pragma warning restore SYSLIB0011 // Type or member is obsolete
-                return Convert.ToBase64String(stream.ToArray());
+            return Convert.ToBase64String(Encoding.UTF8.GetBytes(JsonSerializer.Serialize(anyMovie, options)));
             }
 
         }
@@ -36,14 +34,11 @@ namespace WpfMovie.Services
         /// <returns></returns>
         public Movie Deserialize(string movieString)
         {
-            var formatter = new BinaryFormatter();
-            var bytes = Convert.FromBase64String(movieString);
-            using (var stream = new System.IO.MemoryStream(bytes))
-            {
-#pragma warning disable SYSLIB0011 // Type or member is obsolete
-                return (Movie)formatter.Deserialize(stream);
-#pragma warning restore SYSLIB0011 // Type or member is obsolete
-            }
+            // TODO: This replaces BinaryFormatter with System.Text.Json. This will not deserialize old binary data.
+            // Proposal fix for SYSLIB0011
+            var options = new JsonSerializerOptions { WriteIndented = false };
+            var json = Encoding.UTF8.GetString(Convert.FromBase64String(movieString));
+            return JsonSerializer.Deserialize<Movie>(json, options);
         }
     }
 }
