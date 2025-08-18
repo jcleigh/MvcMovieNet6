@@ -8,9 +8,9 @@ namespace RazorMovie.SharedServices
     {
         private readonly IHtmlHelper _htmlHelper;
         private readonly IJsonHelper _jsonHelper;
-        private readonly HtmlSanitizer _htmlSanitizer;
+        private readonly Ganss.XSS.HtmlSanitizer _htmlSanitizer;
 
-        public Safe(IHtmlHelper htmlHelper, IJsonHelper jsonHelper, HtmlSanitizer htmlSanitizer)
+        public Safe(IHtmlHelper htmlHelper, IJsonHelper jsonHelper, Ganss.XSS.HtmlSanitizer htmlSanitizer)
         {
             _htmlHelper = htmlHelper;
             _jsonHelper = jsonHelper;
@@ -37,7 +37,7 @@ namespace RazorMovie.SharedServices
         public string RawMeta(string inputHtml, out bool isHtmlModified)
         {
             bool bHtmlModified;
-            HtmlSanitizer sane = new HtmlSanitizer();
+            Ganss.XSS.HtmlSanitizer sane = new Ganss.XSS.HtmlSanitizer();
 
             sane.AllowedTags.Clear();
             sane.AllowedTags.Add("meta");
