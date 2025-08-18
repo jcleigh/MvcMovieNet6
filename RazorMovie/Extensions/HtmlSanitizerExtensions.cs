@@ -1,4 +1,5 @@
-﻿
+using Ganss.Xss;
+
 namespace RazorMovie.Extensions;
 
 public static class HtmlSanitizerExtensions
