@@ -7,7 +7,7 @@ public static class HtmlSanitizerExtensions
     {
         serviceCollection.AddScoped(o =>
         {
-            var htmlSanitizer = new Ganss.HtmlSanitizer();
+            var htmlSanitizer = new Ganss.XSS.HtmlSanitizer();
 
             htmlSanitizer.RemovingAtRule += (sender, args) =>
             {
