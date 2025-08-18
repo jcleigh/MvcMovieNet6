@@ -42,7 +42,13 @@ namespace WpfMovie.Tests
         public void Deserialize_ShouldCreateMovie()
         {
             // Arrange
-            var movieString = "AAEAAAD/////AQAAAAAAAAAMAgAAAD9XcGZNb3ZpZSwgVmVyc2lvbj0xLjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPW51bGwFAQAAABVXcGZNb3ZpZS5Nb2RlbHMuTW92aWUCAAAABXRpdGxlC2Rlc2NyaXB0aW9uAQECAAAABgMAAAAKVGVzdCBUaXRsZQYEAAAAEFRlc3QgRGVzY3JpcHRpb24L";
+            // First create a movie and serialize it to get a valid JSON-based string
+            var originalMovie = new Movie
+            {
+                Title = "Test Title",
+                Description = "Test Description"
+            };
+            var movieString = stateManager.Serialize(originalMovie);
             
             // Act
             var newMovie = stateManager.Deserialize(movieString);

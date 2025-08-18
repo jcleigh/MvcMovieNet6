@@ -21,10 +21,7 @@ namespace WpfMovie.Services
             // TODO: This replaces BinaryFormatter with System.Text.Json. This will not deserialize old binary data.
             // Proposal fix for SYSLIB0011
             var options = new JsonSerializerOptions { WriteIndented = false };
-            {
             return Convert.ToBase64String(Encoding.UTF8.GetBytes(JsonSerializer.Serialize(anyMovie, options)));
-            }
-
         }
 
         /// <summary>
