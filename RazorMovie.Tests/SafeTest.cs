@@ -16,7 +16,7 @@ namespace RazorMovie.Tests
             var moqHtmlHelper = new Mock<IHtmlHelper>();
             moqHtmlHelper.Setup(m => m.Raw(It.IsAny<string>())).Returns((string s) => new HtmlString(s));
 
-            var converter = new Safe(moqHtmlHelper.Object, mockJsonHelper.Object, htmlSanitizer);
+            var converter = new Safe(moqHtmlHelper.Object, mockJsonHelper.Object, null);
 
             var actualText = "Hello<script>alert('Hello')</script>World";
 
